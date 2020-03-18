@@ -34,10 +34,10 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Live Example
+## Live Example
 
 [https://covid19stats-66znm160y.now.sh](https://covid19stats-66znm160y.now.sh/)
 
-## Deploy your own
+### Deploy your own
 
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/smarajitdasgupta/covid19stats)
