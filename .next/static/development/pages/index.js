@@ -10,69 +10,102 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
-/* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Stats */ "./components/Stats.js");
+/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
+/* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Stats */ "./components/Stats.js");
+/* harmony import */ var _components_DisplayFlag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/DisplayFlag */ "./components/DisplayFlag.js");
+
 
 var _jsxFileName = "/Users/smarajitdasgupta/workspace/personal_projects/react/coronavirus-react-hooks-next/components/CountrySelector.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_1__["default"])(["\n    display: inline-block;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_1__["default"])(["\n  width: 20rem;\n  height:2.5rem;\n  background: white;\n  border: 1px solid black;\n  color: black;\n  font-weight: bold;\n  font-size: 1rem;\n  padding-left: 0.5rem;\n  margin-left: 1rem;\n  margin-right: 1rem;\n    option {\n        color: black;\n        background: white;\n        display: flex;\n        white-space: pre;\n        min-height: 1rem;\n        padding: 0px 0.5rem 1rem;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
 
 
 
+
+
+
+var Select = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].select(_templateObject());
+var Heading = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].h2(_templateObject2());
 
 var CountrySelector = function CountrySelector() {
-  var _useStats = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_2__["default"])('https://covid19.mathdro.id/api/countries'),
+  var _useStats = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_4__["default"])('https://covid19.mathdro.id/api/countries'),
       countries = _useStats.stats,
       loading = _useStats.loading,
       error = _useStats.error;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('AU'),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])('AUS'),
       selectedCountry = _useState[0],
       setSelectedCountry = _useState[1];
 
   if (loading) return __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 35
     },
     __self: this
   }, "Loading... ");
-  if (error) return __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
-  }, "Error... ");
-  console.log(countries);
+
+  if (error) {
+    console.log(error);
+    return __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38
+      },
+      __self: this
+    }, "Error... ");
+  }
+
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 41
     },
     __self: this
   }, __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 42
     },
     __self: this
-  }), __jsx("h2", {
+  }), __jsx(Heading, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 43
     },
     __self: this
-  }, "Currently Showing ", selectedCountry), __jsx("select", {
+  }, "By Country "), __jsx(Select, {
+    value: selectedCountry,
     onChange: function onChange(e) {
-      console.log(e.target.value);
       setSelectedCountry(e.target.value);
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 44
     },
     __self: this
   }, Object.entries(countries.countries).map(function (_ref) {
@@ -82,37 +115,101 @@ var CountrySelector = function CountrySelector() {
 
     return __jsx("option", {
       key: country,
-      selected: selectedCountry === countries.iso3[code],
       value: countries.iso3[code],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 48
       },
       __self: this
     }, country);
-  })), __jsx("br", {
+  })), __jsx(_components_DisplayFlag__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    country: selectedCountry,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 53
     },
     __self: this
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 54
     },
     __self: this
-  }), __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55
+    },
+    __self: this
+  }), __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_5__["default"], {
     url: "https://covid19.mathdro.id/api/countries/".concat(selectedCountry),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 56
     },
     __self: this
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CountrySelector);
+
+/***/ }),
+
+/***/ "./components/DisplayFlag.js":
+/*!***********************************!*\
+  !*** ./components/DisplayFlag.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var country_flags_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! country-flags-svg */ "./node_modules/country-flags-svg/dist/index.js");
+/* harmony import */ var country_flags_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(country_flags_svg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var _jsxFileName = "/Users/smarajitdasgupta/workspace/personal_projects/react/coronavirus-react-hooks-next/components/DisplayFlag.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+function _templateObject() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: inline-block;\n    img {\n        vertical-align: middle;\n        border-radius:0.3rem;\n        width: 4rem;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+
+var FlagWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].span(_templateObject());
+
+var DisplayFlag = function DisplayFlag(_ref) {
+  var country = _ref.country;
+  var flagUrl = Object(country_flags_svg__WEBPACK_IMPORTED_MODULE_2__["findFlagUrlByIso3Code"])(country);
+  console.log(flagUrl);
+  return __jsx(FlagWrapper, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, __jsx("img", {
+    src: flagUrl,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DisplayFlag);
 
 /***/ }),
 
@@ -174,82 +271,94 @@ var Stats = function Stats(_ref) {
       lineNumber: 23
     },
     __self: this
-  }, "Loading... ");
+  }, "Data not available... ");
+  var _stats$confirmed = stats.confirmed,
+      confirmed = _stats$confirmed === void 0 ? {} : _stats$confirmed,
+      _stats$deaths = stats.deaths,
+      deaths = _stats$deaths === void 0 ? {} : _stats$deaths,
+      _stats$recovered = stats.recovered,
+      recovered = _stats$recovered === void 0 ? {} : _stats$recovered;
+  var defaultText = 'NA';
   if (loading) return __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 26
     },
     __self: this
   }, "Loading... ");
-  if (error) return __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: this
-  }, "Error... ");
+
+  if (error) {
+    console.log(error);
+    return __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, "Error... ");
+  }
+
   return __jsx(StatGrid, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: this
-  }, __jsx(StatBlock, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: this
-  }, __jsx("h3", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
-    },
-    __self: this
-  }, "Confirmed:"), __jsx("span", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30
-    },
-    __self: this
-  }, stats.confirmed.value)), __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: this
-  }, __jsx("h3", {
+  }, __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 33
     },
     __self: this
-  }, "Deaths:"), __jsx("span", {
+  }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34
     },
     __self: this
-  }, stats.deaths.value)), __jsx(StatBlock, {
+  }, "Confirmed:"), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 35
     },
     __self: this
-  }, __jsx("h3", {
+  }, confirmed.value || defaultText)), __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 37
     },
     __self: this
-  }, "Recovered:"), __jsx("span", {
+  }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38
     },
     __self: this
-  }, stats.recovered.value)));
+  }, "Deaths:"), __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: this
+  }, deaths.value || defaultText)), __jsx(StatBlock, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }, "Recovered:"), __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: this
+  }, recovered.value || defaultText)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Stats);
@@ -1127,6 +1236,589 @@ var unitlessKeys = {
 
 /* harmony default export */ __webpack_exports__["default"] = (unitlessKeys);
 
+
+/***/ }),
+
+/***/ "./node_modules/country-flags-svg/dist/data/flags.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/country-flags-svg/dist/data/flags.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+	"ABW": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Aruba.svg",
+	"AUS": "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
+	"AUT": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
+	"AZE": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
+	"BHR": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Bahrain.svg",
+	"BGD": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg",
+	"BEL": "https://upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_Belgium_%28civil%29.svg",
+	"BRA": "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg",
+	"CAN": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg",
+	"CHL": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg",
+	"EUR": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
+	"HRV": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
+	"CYP": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Cyprus.svg",
+	"CHN": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+	"COL": "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg",
+	"CZE": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg",
+	"DNK": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg",
+	"EST": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg",
+	"FIN": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg",
+	"FJI": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Fiji.svg",
+	"FRA": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
+	"DEU": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg",
+	"GRC": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg",
+	"HKG": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Hong_Kong.svg",
+	"HUN": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg",
+	"IND": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg",
+	"IDN": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg",
+	"IRL": "https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg",
+	"ITA": "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg",
+	"JPN": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
+	"LVA": "https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Latvia.svg",
+	"LIE": "https://upload.wikimedia.org/wikipedia/commons/4/47/Flag_of_Liechtenstein.svg",
+	"LTU": "https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Lithuania.svg",
+	"LUX": "https://upload.wikimedia.org/wikipedia/commons/d/da/Flag_of_Luxembourg.svg",
+	"MYS": "https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
+	"MUS": "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Mauritius.svg",
+	"MEX": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg",
+	"MCO": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Flag_of_Monaco.svg",
+	"MNE": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg",
+	"NLD": "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+	"NPL": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg",
+	"NZL": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg",
+	"NOR": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg",
+	"PAN": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg",
+	"PHL": "https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg",
+	"POL": "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+	"PRT": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg",
+	"RUS": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg",
+	"SGP": "https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg",
+	"SVK": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Flag_of_Slovakia.svg",
+	"SVN": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Flag_of_Slovenia.svg",
+	"ZAF": "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg",
+	"KOR": "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
+	"ESP": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
+	"LKA": "https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg",
+	"SWE": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg",
+	"CHE": "https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_%28Pantone%29.svg",
+	"THA": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_Thailand.svg",
+	"TUR": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg",
+	"GBR": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg",
+	"USA": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+	"ARE": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg",
+	"URY": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Uruguay.svg",
+	"VEN": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg",
+	"VNM": "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg"
+};
+
+/***/ }),
+
+/***/ "./node_modules/country-flags-svg/dist/data/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/country-flags-svg/dist/data/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var flags = __webpack_require__(/*! ./flags */ "./node_modules/country-flags-svg/dist/data/flags.js");
+
+var countries = [{
+	name: "Aruba",
+	demonym: "Arubian",
+	flag: flags.ABW,
+	iso2: "AW",
+	iso3: "ABW"
+}, {
+	name: "Australia",
+	demonym: "Australian",
+	flag: flags.AUS,
+	iso2: "AU",
+	iso3: "AUS"
+}, {
+	name: "Austria",
+	demonym: "Austrian",
+	flag: flags.AUT,
+	iso2: "AT",
+	iso3: "AUT"
+}, {
+	name: "Azerbaijan",
+	demonym: "Azerbaijani",
+	flag: flags.AZE,
+	iso2: "AZ",
+	iso3: "AZE"
+}, {
+	name: "Bangladesh",
+	demonym: "Bengali",
+	flag: flags.BGD,
+	iso2: "BD",
+	iso3: "BGD"
+}, {
+	name: "Bahrain",
+	demonym: "Bahraini",
+	flag: flags.BHR,
+	iso2: "BH",
+	iso3: "BHR"
+}, {
+	name: "Belgium",
+	demonym: "Belgian",
+	flag: flags.BEL,
+	iso2: "BE",
+	iso3: "BEL"
+}, {
+	name: "Brazil",
+	demonym: "Brazilian",
+	flag: flags.BRA,
+	iso2: "BR",
+	iso3: "BRA"
+}, {
+	name: "Canada",
+	demonym: "Canadian",
+	flag: flags.CAN,
+	iso2: "CA",
+	iso3: "CAN"
+}, {
+	name: "Chile",
+	demonym: "Chilean",
+	flag: flags.CHL,
+	iso2: "CL",
+	iso3: "CHL"
+}, {
+	name: "China",
+	demonym: "Chinese",
+	flag: flags.CHN,
+	iso2: "CN",
+	iso3: "CHN"
+}, {
+	name: "Colombia",
+	demonym: "Colombian",
+	flag: flags.COL,
+	iso2: "CO",
+	iso3: "COL"
+}, {
+	name: "Croatia",
+	demonym: "Croatian",
+	flag: flags.HRV,
+	iso2: "HR",
+	iso3: "HRV"
+}, {
+	name: "Cyprus",
+	demonym: "Cypriot",
+	flag: flags.CYP,
+	iso2: "CY",
+	iso3: "CYP"
+}, {
+	name: "Czech Republic",
+	demonym: "Czech",
+	flag: flags.CZE,
+	iso2: "CZ",
+	iso3: "CZE"
+}, {
+	name: "Denmark",
+	demonym: "Danish",
+	flag: flags.DNK,
+	iso2: "DK",
+	iso3: "DNK"
+}, {
+	name: "Europe",
+	demonym: "European",
+	flag: flags.EUR,
+	iso2: "EU",
+	iso3: "EUR"
+}, {
+	name: "Estonia",
+	demonym: "Estonian",
+	flag: flags.EST,
+	iso2: "EE",
+	iso3: "EST"
+}, {
+	name: "Fiji",
+	demonym: "Fijian",
+	flag: flags.FJI,
+	iso2: "FJ",
+	iso3: "FJI"
+}, {
+	name: "Finland",
+	demonym: "Finnish",
+	flag: flags.FIN,
+	iso2: "FI",
+	iso3: "FIN"
+}, {
+	name: "France",
+	demonym: "French",
+	flag: flags.FRA,
+	iso2: "FR",
+	iso3: "FRA"
+}, {
+	name: "Germany",
+	demonym: "German",
+	flag: flags.DEU,
+	iso2: "DE",
+	iso3: "DEU"
+}, {
+	name: "Greece",
+	demonym: "Greek",
+	flag: flags.GRC,
+	iso2: "GR",
+	iso3: "GRC"
+}, {
+	name: "Hong Kong",
+	demonym: "Hong Kongese",
+	flag: flags.HKG,
+	iso2: "HK",
+	iso3: "HKG"
+}, {
+	name: "Hungary",
+	demonym: "Hungarian",
+	flag: flags.HUN,
+	iso2: "HU",
+	iso3: "HUN"
+}, {
+	name: "India",
+	demonym: "Indian",
+	flag: flags.IND,
+	iso2: "IN",
+	iso3: "IND"
+}, {
+	name: "Indonesia",
+	demonym: "Indonesian",
+	flag: flags.IDN,
+	iso2: "ID",
+	iso3: "IDN"
+}, {
+	name: "Ireland",
+	demonym: "Irish",
+	flag: flags.IRL,
+	iso2: "IE",
+	iso3: "IRL"
+}, {
+	name: "Italy",
+	demonym: "Italian",
+	flag: flags.ITA,
+	iso2: "IT",
+	iso3: "ITA"
+}, {
+	name: "Japan",
+	demonym: "Japanese",
+	flag: flags.JPN,
+	iso2: "JP",
+	iso3: "JPN"
+}, {
+	name: "Latvia",
+	demonym: "Latvian",
+	flag: flags.LVA,
+	iso2: "LV",
+	iso3: "LVA"
+}, {
+	name: "Liechtenstein",
+	demonym: "Liechtensteiner",
+	flag: flags.LIE,
+	iso2: "LI",
+	iso3: "LIE"
+}, {
+	name: "Lithuania",
+	demonym: "Lithuanian",
+	flag: flags.LTU,
+	iso2: "LT",
+	iso3: "LTU"
+}, {
+	name: "Luxembourg",
+	demonym: "Luxembourgish",
+	flag: flags.LUX,
+	iso2: "LU",
+	iso3: "LUX"
+}, {
+	name: "Malaysia",
+	demonym: "Malaysian",
+	flag: flags.MYS,
+	iso2: "MY",
+	iso3: "MYS"
+}, {
+	name: "Mauritius",
+	demonym: "Mauritian",
+	flag: flags.MUS,
+	iso2: "MU",
+	iso3: "MUS"
+}, {
+	name: "Mexico",
+	demonym: "Mexican",
+	flag: flags.MEX,
+	iso2: "MX",
+	iso3: "MEX"
+}, {
+	name: "Monaco",
+	demonym: "Monegasque",
+	flag: flags.MCO,
+	iso2: "MC",
+	iso3: "MCO"
+}, {
+	name: "Montenegro",
+	demonym: "Montenegrin",
+	flag: flags.MNE,
+	iso2: "ME",
+	iso3: "MNE"
+}, {
+	name: "Nepal",
+	demonym: "Nepalese",
+	flag: flags.NPL,
+	iso2: "NP",
+	iso3: "NPL"
+}, {
+	name: "Netherlands",
+	demonym: "Dutch",
+	flag: flags.NLD,
+	iso2: "NL",
+	iso3: "NLD"
+}, {
+	name: "New Zealand",
+	demonym: "New Zealander",
+	flag: flags.NZL,
+	iso2: "NZ",
+	iso3: "NZL"
+}, {
+	name: "Norway",
+	demonym: "Norwegian",
+	flag: flags.NOR,
+	iso2: "NO",
+	iso3: "NOR"
+}, {
+	name: "Panama",
+	demonym: "Panamanian",
+	flag: flags.PAN,
+	iso2: "PA",
+	iso3: "PAN"
+}, {
+	name: "Philippines",
+	demonym: "Filipino",
+	flag: flags.PHL,
+	iso2: "PH",
+	iso3: "PHL"
+}, {
+	name: "Poland",
+	demonym: "Polish",
+	flag: flags.POL,
+	iso2: "PL",
+	iso3: "POL"
+}, {
+	name: "Portugal",
+	demonym: "Portuguese",
+	flag: flags.PRT,
+	iso2: "PT",
+	iso3: "PRT"
+}, {
+	name: "Russia",
+	demonym: "Russian",
+	flag: flags.RUS,
+	iso2: "RU",
+	iso3: "RUS"
+}, {
+	name: "Singapore",
+	demonym: "Singaporean",
+	flag: flags.SGP,
+	iso2: "SG",
+	iso3: "SGP",
+	altSpellings: ["SG", "Singapura", "Republik Singapura"]
+}, {
+	name: "Sri Lanka",
+	demonym: "Sri Lankan",
+	flag: flags.LKA,
+	iso2: "LK",
+	iso3: "LKA"
+}, {
+	name: "Slovakia",
+	demonym: "Slovak",
+	flag: flags.SVK,
+	iso2: "SK",
+	iso3: "SVK"
+}, {
+	name: "Slovenia",
+	demonym: "Slovenian",
+	flag: flags.SVN,
+	iso2: "SI",
+	iso3: "SVN"
+}, {
+	name: "South Africa",
+	demonym: "South African",
+	flag: flags.ZAF,
+	iso2: "ZA",
+	iso3: "ZAF"
+}, {
+	name: "South Korea",
+	demonym: "South Korean",
+	flag: flags.KOR,
+	iso2: "KR",
+	iso3: "KOR",
+	altSpellings: ["Republic of Korea"]
+}, {
+	name: "Spain",
+	demonym: "Spanish",
+	flag: flags.ESP,
+	iso2: "ES",
+	iso3: "ESP"
+}, {
+	name: "Sweden",
+	demonym: "Swedish",
+	flag: flags.SWE,
+	iso2: "SE",
+	iso3: "SWE"
+}, {
+	name: "Switzerland",
+	demonym: "Swiss",
+	flag: flags.CHE,
+	iso2: "CH",
+	iso3: "CHE"
+}, {
+	name: "Thailand",
+	demonym: "Thai",
+	flag: flags.THA,
+	iso2: "TH",
+	iso3: "THA"
+}, {
+	name: "Turkey",
+	demonym: "Turkish",
+	flag: flags.TUR,
+	iso2: "TR",
+	iso3: "TUR"
+}, {
+	name: "United Kingdom",
+	altSpellings: ["UK"],
+	demonym: "British",
+	flag: flags.GBR,
+	iso2: "GB",
+	iso3: "GBR"
+}, {
+	name: "United States",
+	altSpellings: ["USA"],
+	demonym: "American",
+	flag: flags.USA,
+	iso2: "US",
+	iso3: "USA"
+}, {
+	name: "United Arab Emirates",
+	demonym: "Emirati",
+	flag: flags.ARE,
+	iso2: "AE",
+	iso3: "ARE",
+	altSpellings: ["AE", "UAE"]
+}, {
+	name: "Uruguay",
+	demonym: "Uruguayan",
+	flag: flags.URY,
+	iso2: "UY",
+	iso3: "URY"
+}, {
+	name: "Venezuela",
+	demonym: "Venezuelan",
+	flag: flags.VEN,
+	iso2: "VE",
+	iso3: "VEN"
+}, {
+	name: "Vietnam",
+	demonym: "Vietnamese",
+	flag: flags.VNM,
+	iso2: "VN",
+	iso3: "VNM",
+	altSpellings: ["Viet Nam", "Republic of Viet Nam", "South Vietnam"]
+}];
+
+module.exports = {
+	countries: countries,
+	flagUrls: flags
+};
+
+/***/ }),
+
+/***/ "./node_modules/country-flags-svg/dist/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/country-flags-svg/dist/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(/*! ./data/index */ "./node_modules/country-flags-svg/dist/data/index.js"),
+    countries = _require.countries,
+    flagUrls = _require.flagUrls;
+
+var _require2 = __webpack_require__(/*! ./lib/api */ "./node_modules/country-flags-svg/dist/lib/api.js"),
+    findFlagUrlByCountryName = _require2.findFlagUrlByCountryName,
+    findFlagUrlByNationality = _require2.findFlagUrlByNationality,
+    findFlagUrlByIso2Code = _require2.findFlagUrlByIso2Code,
+    findFlagUrlByIso3Code = _require2.findFlagUrlByIso3Code;
+
+module.exports = {
+	countries: countries,
+	flagUrls: flagUrls,
+	findFlagUrlByCountryName: findFlagUrlByCountryName,
+	findFlagUrlByNationality: findFlagUrlByNationality,
+	findFlagUrlByIso2Code: findFlagUrlByIso2Code,
+	findFlagUrlByIso3Code: findFlagUrlByIso3Code
+};
+
+/***/ }),
+
+/***/ "./node_modules/country-flags-svg/dist/lib/api.js":
+/*!********************************************************!*\
+  !*** ./node_modules/country-flags-svg/dist/lib/api.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(/*! ../data/index */ "./node_modules/country-flags-svg/dist/data/index.js"),
+    countries = _require.countries;
+
+function findFlagUrlByPredicate(countryInfos, predicate) {
+	var countryInfo = countryInfos.find(predicate) || { flag: "" };
+
+	return countryInfo.flag;
+}
+
+module.exports = {
+	findFlagUrlByCountryName: function findFlagUrlByCountryName(countryName) {
+		var flagUrl = findFlagUrlByPredicate(countries, function (_ref) {
+			var name = _ref.name;
+			return name.toUpperCase() === countryName.toUpperCase();
+		}) || findFlagUrlByPredicate(countries, function (_ref2) {
+			var altSpellings = _ref2.altSpellings;
+			return altSpellings && altSpellings.some(function (item) {
+				return item.toUpperCase() === countryName.toUpperCase();
+			});
+		});
+
+		return flagUrl;
+	},
+	findFlagUrlByNationality: function findFlagUrlByNationality(nationality) {
+		return findFlagUrlByPredicate(countries, function (_ref3) {
+			var demonym = _ref3.demonym;
+			return demonym.toUpperCase() === nationality.toUpperCase();
+		});
+	},
+	findFlagUrlByIso2Code: function findFlagUrlByIso2Code(iso2Code) {
+		return findFlagUrlByPredicate(countries, function (_ref4) {
+			var iso2 = _ref4.iso2;
+			return iso2.toUpperCase() === iso2Code.toUpperCase();
+		});
+	},
+	findFlagUrlByIso3Code: function findFlagUrlByIso3Code(iso3Code) {
+		return findFlagUrlByPredicate(countries, function (_ref5) {
+			var iso3 = _ref5.iso3;
+			return iso3.toUpperCase() === iso3Code.toUpperCase();
+		});
+	}
+};
 
 /***/ }),
 
@@ -4508,7 +5200,7 @@ var _jsxFileName = "/Users/smarajitdasgupta/workspace/personal_projects/react/co
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    padding: 2rem;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,\n     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n\n"]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,\n     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -4526,10 +5218,16 @@ var Index = function Index() {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
+  }, __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 13
     },
     __self: this
-  }, __jsx(GlobalStyle, {
+  }, "Coronavirus disease (COVID-19) cases"), __jsx(GlobalStyle, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
@@ -4586,7 +5284,7 @@ var useStats = function useStats(url) {
       loading = _useState2[0],
       setLoading = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       error = _useState3[0],
       setError = _useState3[1];
 
@@ -4635,7 +5333,7 @@ var useStats = function useStats(url) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!**************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fsmarajitdasgupta%2Fworkspace%2Fpersonal_projects%2Freact%2Fcoronavirus-react-hooks-next%2Fpages%2Findex.js ***!
   \**************************************************************************************************************************************************************************************/
@@ -4658,5 +5356,5 @@ module.exports = dll_0fb095e325d7ebf261c3;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

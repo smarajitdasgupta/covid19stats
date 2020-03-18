@@ -20,22 +20,27 @@ const StatBlock = styled.div`
 
 const Stats = ({ url }) => {
     const { stats, loading, error } = useStats(url);
-    if (!stats) return <p>Loading... </p>;
+    if (!stats) return <p>Data not available... </p>;
+    const { confirmed = {}, deaths = {}, recovered = {} } = stats;
+    const defaultText = 'NA';
     if (loading) return <p>Loading... </p>
-    if (error) return <p>Error... </p>
+    if (error) {
+        console.log(error)
+        return <p>Error... </p>
+    }
     return (
         <StatGrid>
             <StatBlock>
                 <h3>Confirmed:</h3>
-                <span>{stats.confirmed.value}</span>
+                <span>{confirmed.value || defaultText}</span>
             </StatBlock>
             <StatBlock>
                 <h3>Deaths:</h3>
-                <span>{stats.deaths.value}</span>
+                <span>{deaths.value || defaultText}</span>
             </StatBlock>
             <StatBlock>
                 <h3>Recovered:</h3>
-                <span>{stats.recovered.value}</span>
+                <span>{recovered.value || defaultText}</span>
             </StatBlock>
         </StatGrid>
     )

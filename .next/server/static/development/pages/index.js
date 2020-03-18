@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,8 +104,11 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
-/* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Stats */ "./components/Stats.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_useStats__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/useStats */ "./utils/useStats.js");
+/* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Stats */ "./components/Stats.js");
+/* harmony import */ var _components_DisplayFlag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DisplayFlag */ "./components/DisplayFlag.js");
 var _jsxFileName = "/Users/smarajitdasgupta/workspace/personal_projects/react/coronavirus-react-hooks-next/components/CountrySelector.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -113,91 +116,180 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
+const Select = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.select`
+  width: 20rem;
+  height:2.5rem;
+  background: white;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+    option {
+        color: black;
+        background: white;
+        display: flex;
+        white-space: pre;
+        min-height: 1rem;
+        padding: 0px 0.5rem 1rem;
+    }
+`;
+const Heading = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.h2`
+    display: inline-block;
+`;
+
 const CountrySelector = () => {
   const {
     stats: countries,
     loading,
     error
-  } = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_1__["default"])('https://covid19.mathdro.id/api/countries');
+  } = Object(_utils_useStats__WEBPACK_IMPORTED_MODULE_2__["default"])('https://covid19.mathdro.id/api/countries');
   const {
     0: selectedCountry,
     1: setSelectedCountry
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('AU');
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('AUS');
   if (loading) return __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 35
     },
     __self: undefined
   }, "Loading... ");
-  if (error) return __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: undefined
-  }, "Error... ");
-  console.log(countries);
+
+  if (error) {
+    console.log(error);
+    return __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38
+      },
+      __self: undefined
+    }, "Error... ");
+  }
+
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 41
     },
     __self: undefined
   }, __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 42
     },
     __self: undefined
-  }), __jsx("h2", {
+  }), __jsx(Heading, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 43
     },
     __self: undefined
-  }, "Currently Showing ", selectedCountry), __jsx("select", {
+  }, "By Country "), __jsx(Select, {
+    value: selectedCountry,
     onChange: e => {
-      console.log(e.target.value);
       setSelectedCountry(e.target.value);
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 44
     },
     __self: undefined
   }, Object.entries(countries.countries).map(([country, code]) => __jsx("option", {
     key: country,
-    selected: selectedCountry === countries.iso3[code],
     value: countries.iso3[code],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 48
     },
     __self: undefined
-  }, country))), __jsx("br", {
+  }, country))), __jsx(_components_DisplayFlag__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    country: selectedCountry,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 53
     },
     __self: undefined
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 54
     },
     __self: undefined
-  }), __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55
+    },
+    __self: undefined
+  }), __jsx(_components_Stats__WEBPACK_IMPORTED_MODULE_3__["default"], {
     url: `https://covid19.mathdro.id/api/countries/${selectedCountry}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 56
     },
     __self: undefined
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CountrySelector);
+
+/***/ }),
+
+/***/ "./components/DisplayFlag.js":
+/*!***********************************!*\
+  !*** ./components/DisplayFlag.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var country_flags_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! country-flags-svg */ "country-flags-svg");
+/* harmony import */ var country_flags_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(country_flags_svg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/smarajitdasgupta/workspace/personal_projects/react/coronavirus-react-hooks-next/components/DisplayFlag.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const FlagWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.span`
+  display: inline-block;
+    img {
+        vertical-align: middle;
+        border-radius:0.3rem;
+        width: 4rem;
+    }
+`;
+
+const DisplayFlag = ({
+  country
+}) => {
+  const flagUrl = Object(country_flags_svg__WEBPACK_IMPORTED_MODULE_1__["findFlagUrlByIso3Code"])(country);
+  console.log(flagUrl);
+  return __jsx(FlagWrapper, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, __jsx("img", {
+    src: flagUrl,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: undefined
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DisplayFlag);
 
 /***/ }),
 
@@ -250,82 +342,93 @@ const Stats = ({
       lineNumber: 23
     },
     __self: undefined
-  }, "Loading... ");
+  }, "Data not available... ");
+  const {
+    confirmed = {},
+    deaths = {},
+    recovered = {}
+  } = stats;
+  const defaultText = 'NA';
   if (loading) return __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 26
     },
     __self: undefined
   }, "Loading... ");
-  if (error) return __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: undefined
-  }, "Error... ");
+
+  if (error) {
+    console.log(error);
+    return __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: undefined
+    }, "Error... ");
+  }
+
   return __jsx(StatGrid, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: undefined
-  }, __jsx(StatBlock, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: undefined
-  }, __jsx("h3", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
-    },
-    __self: undefined
-  }, "Confirmed:"), __jsx("span", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30
-    },
-    __self: undefined
-  }, stats.confirmed.value)), __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: undefined
-  }, __jsx("h3", {
+  }, __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 33
     },
     __self: undefined
-  }, "Deaths:"), __jsx("span", {
+  }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34
     },
     __self: undefined
-  }, stats.deaths.value)), __jsx(StatBlock, {
+  }, "Confirmed:"), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 35
     },
     __self: undefined
-  }, __jsx("h3", {
+  }, confirmed.value || defaultText)), __jsx(StatBlock, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 37
     },
     __self: undefined
-  }, "Recovered:"), __jsx("span", {
+  }, __jsx("h3", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38
     },
     __self: undefined
-  }, stats.recovered.value)));
+  }, "Deaths:"), __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: undefined
+  }, deaths.value || defaultText)), __jsx(StatBlock, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, __jsx("h3", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: undefined
+  }, "Recovered:"), __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: undefined
+  }, recovered.value || defaultText)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Stats);
@@ -354,7 +457,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const GlobalStyle = styled_components__WEBPACK_IMPORTED_MODULE_3__["createGlobalStyle"]`
-    padding: 2rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -364,10 +466,16 @@ const Index = () => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: undefined
+  }, __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 13
     },
     __self: undefined
-  }, __jsx(GlobalStyle, {
+  }, "Coronavirus disease (COVID-19) cases"), __jsx(GlobalStyle, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
@@ -424,7 +532,7 @@ const useStats = url => {
   const {
     0: error,
     1: setError
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     console.log('mounting or updating');
 
@@ -452,7 +560,7 @@ const useStats = url => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -461,6 +569,17 @@ const useStats = url => {
 
 module.exports = __webpack_require__(/*! /Users/smarajitdasgupta/workspace/personal_projects/react/coronavirus-react-hooks-next/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "country-flags-svg":
+/*!************************************!*\
+  !*** external "country-flags-svg" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("country-flags-svg");
 
 /***/ }),
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const useStats = (url) => {
     const [stats, setStats] = useState();
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState();
+    const [error, setError] = useState({});
     useEffect(() => {
         console.log('mounting or updating');
         async function fetchData() {
