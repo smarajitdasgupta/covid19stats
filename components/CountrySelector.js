@@ -41,15 +41,17 @@ const CountrySelector = () => {
         <div>
             <hr />
             <Heading>By Country </Heading>
+
             <Select value={selectedCountry} onChange={e => {
                 setSelectedCountry(e.target.value);
             }}>
-                {Object.entries(countries.countries).map(([country, code]) => (
+                {Object.entries(countries.countries).map(([key, country]) => (
                     <option
-                        key={country}
-                        value={countries.iso3[code]}>{country}</option>
+                        key={key}
+                        value={country.iso3}>{country.name}</option>
                 ))}
             </Select>
+
             <DisplayFlag country={selectedCountry}></DisplayFlag>
             <br></br>
             <br></br>
