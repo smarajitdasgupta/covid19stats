@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Live Example
 
-[https://covid19stats-66znm160y.now.sh](https://covid19stats-66znm160y.now.sh/)
+[https://covid19stats-1k6pu7jk4.now.sh/](https://covid19stats-1k6pu7jk4.now.sh/)
 
 ### Deploy your own
 
